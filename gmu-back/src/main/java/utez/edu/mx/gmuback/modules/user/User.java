@@ -1,11 +1,12 @@
 package utez.edu.mx.gmuback.modules.user;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import utez.edu.mx.gmuback.modules.students.Student;
 
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,7 +26,7 @@ public class User {
     private  String rol;
 
     @OneToOne(mappedBy = "user")
-    @JsonIgnore
+    @JsonBackReference
     private Student student;
 
     public User() {
